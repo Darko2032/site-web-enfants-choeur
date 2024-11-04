@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie d'images</title>
+    <style>
+        /* Style de l'en-tête */
+        header{
+            background-image: url(311378839_623492159374160_2541050419739747841_n.jpg);
+            background-size:cover;
+            background-position:center;
+            color:white;
+            padding: 10px;
+            border-radius: 12px;
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2vw;
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+            font-family: cursive;
+        }
+        header h1{
+            font-size: x-large;
+        }
+        /* Style de la galerie */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            animation: slideIn 0.8s ease; /* Animation de translation de la galerie */
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ajout d'ombre */
+        }
+
+        .gallery-item:hover {
+            transform: rotate(5deg) scale(1.05); /* Rotation et zoom au survol */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Ombre au survol */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease; /* Transition pour les images */
+        }
+
+        /* Légende qui glisse */
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%); /* Masqué par défaut */
+            transition: transform 0.3s ease; /* Transition pour la légende */
+        }
+
+        .gallery-item:hover .caption {
+            transform: translateY(0); /* Afficher la légende */
+        }
+
+        /* Style pour la modal */
+        .modal {
+            display: none; /* Masqué par défaut */
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px); /* Flou de fond */
+            opacity: 0;
+            transition: opacity 0.3s ease; /* Transition pour la modal */
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1; /* Opacité lors de l'affichage */
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: bounceIn 0.5s; /* Animation de rebond */
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Animation de translation de la galerie */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation de rebond */
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .Retour{
+    position: flex;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2vw;
+    position: relative;
+    overflow: hidden;
+}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Notre galerie</h1>
+    </header>
+    <div class="Retour">
+        <a href="index.html">Retour à la page d'accueil</a><br>
+    </div>
+    <div class="gallery-container">
+        <!-- Images de la galerie -->
+        <div class="gallery-item">
+            <img src="413951106_376130564804958_3181109529474932754_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">24 Décembre 2023</div>
+        </div>
+        <div class="gallery-item">
+            <img src="416089525_382666800818001_6001588150836284219_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">31 Décembre 2023</div>
+        </div>
+        <div class="gallery-item">
+            <img src="416093407_382664257484922_4123318105336352773_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">31 Décembre 2023</div>
+        </div>
+        <div class="gallery-item">
+            <img src="431572743_427733092978038_7471485472613815962_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Jeudi saint 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="434470867_427731742978173_4600672287342941508_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Jeudi saint 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="434497733_427731912978156_3474367171174328360_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Jeudi saint 2023</div>
+        </div>
+        <div class="gallery-item">
+            <img src="433945640_427733209644693_2843168315412764193_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Jeudi saint 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="434420683_427731469644867_1644966420394406239_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Jeudi saint 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="434426901_430841526000528_4573124988541540685_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Vendredi saint 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="434408198_430840682667279_2443333048129324630_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Vendredi saint 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="434456658_430840572667290_1789803478328729225_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Vendredi saint 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="433970884_430840399333974_7124418968106266246_n.jpg" alt="Église Catholique" onclick="openModal(this)">
+            <div class="caption">Vendredi saint 2024</div>
+        </div>
+    </div>
+
+    <!-- Conteneur de la modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Image agrandie">
+        </div>
+    </div>
+
+    <script>
+        // Ouvrir la modal avec l'image cliquée
+        function openModal(element) {
+            const modal = document.getElementById("imageModal");
+            modal.classList.add('show'); // Ajouter la classe pour montrer la modal
+            document.getElementById("modalImage").src = element.src;
+        }
+
+        // Fermer la modal
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.classList.remove('show'); // Retirer la classe pour cacher la modal
+        }
+    </script>
+
+</body>
+</html>
